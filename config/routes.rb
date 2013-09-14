@@ -1,4 +1,6 @@
 Motivatr::Application.routes.draw do
+
+  resources :blackmails
   resources :challenges
 
 
