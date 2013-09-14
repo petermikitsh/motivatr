@@ -45,7 +45,9 @@ class ChallengesController < ApplicationController
     timezone = "%+03d:00" % params[:timezone]
     params[:challenge][:start] += timezone
     params[:challenge][:end] += timezone
-    @challenge = Challenge.new(params[:challenge])
+
+    group = Group.find(params[:group_id])
+    @challenge = group.challenges.build(params[:challenge])
     @challenge.group.users.each do |user|
       Action.create( :challenge => @challenge, :user => user, :count => 0)
     end
