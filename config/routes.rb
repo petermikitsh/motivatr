@@ -10,7 +10,7 @@ Motivatr::Application.routes.draw do
   # first created -> highest priority.
 
   # Required for devise
-  root :to => "home#index"
+  root to: "devise/sessions#new"
 
   match '/check_in' => 'test#check_in'
 

@@ -1,20 +1,36 @@
-<ul class="nav">
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to 'Login', new_user_session_path %>
-    </li>
-  <% end %>
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Edit account', edit_user_registration_path %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to 'Sign up', new_user_registration_path %>
-    </li>
-  <% end %>
-</ul>
+<div class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Motivatr", root_path, class:"navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "My Challenges", challenges_path %></li>
+        <li><%= link_to "My Group", groups_path %></li>
+        <% if user_signed_in? %>
+          <li class="pull-right">
+          <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+          </li>
+        <% else %>
+          <li class="pull-right">
+          <%= link_to 'Login', new_user_session_path %>
+          </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <li class="pull-right">
+          <%= link_to 'Edit account', edit_user_registration_path %>
+          </li>
+        <% else %>
+          <li class="pull-right">
+          <%= link_to 'Sign up', new_user_registration_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
