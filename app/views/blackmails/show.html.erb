@@ -1,10 +1,10 @@
-<%= @blackmail.user %>
+
 <% if @blackmail.user == current_user %>
   <%= image_tag @blackmail.attachment.url(:standard).gsub(/s3[.]/, "s3-us-west-2.") %>
+  <br>
   <%= link_to 'Edit', edit_blackmail_path(@blackmail) %> |
  <% else %>
-This isn't yours ;)
-
+   This isn't yours ;)
 <% end %>
 
 <%= link_to 'Back', blackmail_path %>

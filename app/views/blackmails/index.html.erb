@@ -1,25 +1,10 @@
-<h1>Listing blackmails</h1>
+<h1>My blackmail</h1>
+<%= button_to 'Upload your shame', new_blackmail_path, :class => 'btn btn-primary', :method => :get %>
+<br>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Attachment</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% current_user.blackmails.each do |blackmail| %>
-  <tr>
-    <td><%= blackmail.user %></td>
-    <td><%= image_tag blackmail.attachment.url(:standard).gsub(/s3[.]/, "s3-us-west-2.") %></td>
-    <td><%= link_to 'Show', blackmail %></td>
-    <td><%= link_to 'Edit', edit_challenge_path(blackmail) %></td>
-    <td><%= link_to 'Destroy', blackmail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% current_user.blackmails.each do |bmail| %>
+  <%= image_tag bmail.attachment.url(:standard).gsub(/s3[.]/, "s3-us-west-2.") %><br><br>
 <% end %>
-</table>
 
-<br />
+<br><br>
 
-<%= link_to 'New Blackmail', new_blackmail_path %>
