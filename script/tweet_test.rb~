@@ -1,9 +1,6 @@
 # require 'net/http'
 # uri = URI('http://192.241.203.120')
 # Net::HTTP.get(uri)
-require 'rubygems'
-gem 'twitter'
-require 'twitter'
 
 client = Twitter::REST::Client.new do |config|
   config.consumer_key        = "gfjPNCWchvebJCxasBYPQ"
