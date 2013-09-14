@@ -12,7 +12,7 @@ Motivatr::Application.routes.draw do
   # Required for devise
   root :to => "home#index"
 
-  match 'checkin' => 'test#check_in'
+  match '/check_in' => 'test#check_in'
 
   post '/check_in/verify' => 'test#verify'
 
