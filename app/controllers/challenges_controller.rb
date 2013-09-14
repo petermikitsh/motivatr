@@ -42,7 +42,12 @@ class ChallengesController < ApplicationController
   # POST /challenges
   # POST /challenges.json
   def create
+    timezone = "%+03d:00" % params[:timezone]
+    params[:challenge][:start] += timezone
+    params[:challenge][:end] += timezone
+    logger.debug(params)
     @challenge = Challenge.new(params[:challenge])
+    logger.debug(@challenge)
 
     respond_to do |format|
       if @challenge.save
