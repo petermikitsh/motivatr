@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914042201) do
+ActiveRecord::Schema.define(:version => 20130914043938) do
 
   create_table "challenges", :force => true do |t|
     t.datetime "start"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20130914042201) do
     t.integer  "bucket"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "leader"
   end
 
   create_table "groups_users", :id => false, :force => true do |t|
