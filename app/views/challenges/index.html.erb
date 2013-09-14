@@ -1,13 +1,13 @@
-<% @challenges.each do |challenge| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          <strong>Name: <%= challenge.name %></strong>
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse in">
+<legend><h2>My Challenges</h2></legend>
+
+<% current_user.groups.each do |group| %>
+  <% group.challenges.each do |challenge| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+            <strong>Name: <%= challenge.name %></strong>
+        </h4>
+      </div>
       <div class="panel-body">
         <div class="row">
           <div class="col-sm-6">Members: <%= challenge.group.users.map(&:name).to_sentence %></div>
@@ -15,9 +15,9 @@
         </div>
         <div>
           Description: <%= challenge.description %>
-          <%= link_to 'Show', challenge, :class => 'btn btn-default pull-right' %>
         </div>
+        <%= button_to 'Details', challenge, method: :get, :class => 'btn btn-primary pull-right' %>
       </div>
     </div>
-  </div>
+    <% end %>
 <% end %>
