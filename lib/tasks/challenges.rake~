@@ -14,10 +14,10 @@ namespace :challenges do
     				stat.failures += 1
     				#  Call tweet
     				client = Twitter::REST::Client.new do |config|
-    				  config.consumer_key        = NS3zNErKuJoTG9ChAq9u9gYOUR_CONSUMER_KEY"
-    				  config.consumer_secret     = "ZIdllly86QZNHwK3PrkdVXg1aPkjI04MQGD39jUguw"
-    				  config.access_token        = "1864697022-rCWE5vo4ro2lpj5tJhmkMUOKBDRTNke4ijW3W8S"
-    				  config.access_token_secret = "9REupwu8jENObdZqWmrx4bsmBKbxeQF0k7H0HB6Q"
+    				  config.consumer_key        = "YOUR_CONSUMER_KEY"
+    				  config.consumer_secret     = "YOUR_CONSUMER_SECRET"
+    				  config.access_token        = "YOUR_ACCESS_TOKEN"
+    				  config.access_token_secret = "YOUR_ACCESS_SECRET"
     				end
     				client.update("I'm tweeting with @gem!")
     			else
