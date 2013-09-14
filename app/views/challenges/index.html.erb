@@ -10,8 +10,8 @@
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-sm-6">Members: <%= challenge.group.users.map(&:name).to_sentence %></div>
-          <div class="col-sm-6 pull-right" style="text-align:right;">Time Remaining: <%= time_ago_in_words(challenge.end) %></div>
+          <div class="col-sm-6"><strong>Members: </strong><%= challenge.group.users.map(&:name).to_sentence %></div>
+          <div class="col-sm-6"><strong>Time Remaining: </strong><%= time_ago_in_words(challenge.end) %></div>
         </div>
         <div class="spacer10">
           Description: <%= challenge.description %>
