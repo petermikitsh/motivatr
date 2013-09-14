@@ -1,9 +1,40 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Bucket:</b>
   <%= @group.bucket %>
 </p>
+
+<%= form_for([@group, Challenge.new], html: { class: 'form-horizontal', role: 'form' }) do |f| %>
+  <legend><h2>New challenge</h2></legend>
+
+  <%= hidden_field_tag :timezone %>
+
+  <div class="form-group">
+    <%= f.label :start, class: 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_field :start, type: 'datetime-local', class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :end, class: 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_field :end, type: 'datetime-local', class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, class: 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_field :description, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-4">
+      <%= f.submit "Create", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
 
 
 <%= link_to 'Edit', edit_group_path(@group) %> |

@@ -1,128 +1,29 @@
-<h1>Listing challenges</h1>
-
-<table>
-  <tr>
-    <th>Start</th>
-    <th>End</th>
-    <th>Description</th>
-    <th>Group</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @challenges.each do |challenge| %>
-  <tr>
-    <td><%= challenge.start %></td>
-    <td><%= challenge.end %></td>
-    <td><%= challenge.description %></td>
-    <td><%= challenge.group %></td>
-    <td><%= link_to 'Show', challenge %></td>
-    <td><%= link_to 'Edit', edit_challenge_path(challenge) %></td>
-    <td><%= link_to 'Destroy', challenge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Challenge', new_challenge_path %>
-
-<div class="row">
-  <div class="col-xs-6 col-sm-8"><h2>Challenges</h2></div>
-<!--   <div class="col-xs-6 col-sm-4">
-    <a data-toggle="modal" href="#myModal" type="button" class="btn btn-primary btn-lg btn-block">New Challenge</a>
-  </div> -->
-</div>
-<div class="panel-group" id="accordion">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-          <strong>Gym</strong>
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-sm-6">Members: Alice, Bob, Tom</div>
-          <div class="col-sm-6">Time Remaining: 5 hours</div>
-        </div>
-        <div class="spacer10">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-        </div>
-        <button type="button" class="btn btn-info btn-default pull-right">Details</button>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-         <strong>Tan</strong>
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-sm-6">Members: Alice, Bob, Tom</div>
-          <div class="col-sm-6">Time Remaining: 5 hours</div>
-        </div>
-        <div>
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-        </div>
-        <button type="button" class="btn btn-info btn-default pull-right">Details</button> 
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
+<% current_user.groups.each do |group| %>
+  <% group.challenges.each do |challenge| %>
+     <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          <strong>Laundry</strong>
+          <strong>Name: <%= challenge.name %></strong>
         </a>
       </h4>
     </div>
-    <div id="collapseThree" class="panel-collapse collapse">
+    <div id="collapseThree" class="panel-collapse collapse in">
       <div class="panel-body">
           <div class="row">
-          <div class="col-sm-6">Members: Alice, Bob, Tom</div>
-          <div class="col-sm-6">Time Remaining: 5 hours</div>
+          <div class="col-sm-6">Members: <% challenge.group.users.each do |user| %><%= user.name %><% end %></div>
+          <div class="col-sm-6 pull-right" style="text-align:right;">Time Remaining: <%= time_ago_in_words(challenge.end) %></div>
         </div>
         <div>
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+          Description: <%= challenge.description %>
+         <%= link_to 'Show', challenge, :class => 'btn btn-default pull-right' %>
         </div>
-        <button type="button" class="btn btn-info btn-default pull-right">Details</button> 
       </div>
     </div>
   </div>
-  <% @challenges.each_with_index do |challenge, index| %>
-   <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          <strong><%= challenge.name %></strong>
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse">
-      <div class="panel-body">
-          <div class="row">
-          <div class="col-sm-6">Members: <%= challenge.group %></div>
-          <div class="col-sm-6">Time Remaining: <%= Time.now - challenge.end %></div>
-        </div>
-        <div>
-          <%= challenge.description %>
-        </div>
-        <button type="button" class="btn btn-info btn-default pull-right">Details</button> 
-        <%= link_to 'Show', challenge %>
-        <%= link_to 'Edit', edit_challenge_path(challenge) %>
-        <%= link_to 'Destroy', challenge, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
-    </div>
-  </div>
+  <% end %>
 <% end %>
+
+
 </div><!-- panel-group -->
 
