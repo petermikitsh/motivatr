@@ -2,6 +2,10 @@
 	margin-top: 10px;
 }
 
+.spacer15 {
+	margin-top: 15px;
+}
+
 .form-signin {
 	max-width: 330px;
 	padding: 15px;
@@ -23,5 +27,3 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-style="max-width: 330px; padding: 15px; margin: 0 auto;"
