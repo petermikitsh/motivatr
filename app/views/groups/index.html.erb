@@ -12,7 +12,7 @@
     <div class="panel-heading">
       <h3 class="panel-title">
         <strong>
-          <%= link_to 'Group Name', group %>
+          <%= group.name %>
         </strong>
       </h3>
     </div>
@@ -23,7 +23,10 @@
         </div>
         <div class="col-sm-6"><strong>Fun Fund: </strong><i>$<%= group.bucket %></i></div>
       </div>
-      <%= button_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %>
+      <div class="spacer10 row">
+        <div class="col-xs-6 col-sm-3"><%= button_to 'New Challenge', group, method: :get, class: 'btn btn-primary btn-block' %></div>
+        <div class="col-xs-6 col-sm-3"><%= button_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></div>
+      </div>
     </div><!-- panel-body -->
   </div><!-- panel -->
 <% end %>

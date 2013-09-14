@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20130914201353) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "name"
+    t.integer  "lat"
+    t.integer  "long"
   end
 
   add_index "challenges", ["group_id"], :name => "index_challenges_on_group_id"

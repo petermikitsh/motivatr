@@ -1,6 +1,6 @@
- <h2><%= @challenge.name %></h2>
+ <legend><h2><%= @challenge.name %></h2></legend>
   <div class="row">
-    <div class="col-sm-6"><h4>Group: <%= @challenge.group.id %></h4></div>
+    <div class="col-sm-6"><h4>Group: <%= @challenge.group.name %></h4></div>
     <div class="col-sm-6"><h4>End Time: <%= @challenge.end.strftime("%-m/%-d/%y %l:%M %p") %></h4></div>
   </div>
 
@@ -31,5 +31,3 @@
      </tbody>
     </table>
   </div>
-
-<%= link_to 'Back', challenges_path %>
