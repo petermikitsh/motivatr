@@ -12,6 +12,14 @@ namespace :challenges do
     			stat = Stats.where(user_id: user.id).where(group_id: challenge.group.id)
     			if(user.action==0)
     				stat.failures += 1
+    				#  Call tweet
+    				client = Twitter::REST::Client.new do |config|
+    				  config.consumer_key        = "YOUR_CONSUMER_KEY"
+    				  config.consumer_secret     = "YOUR_CONSUMER_SECRET"
+    				  config.access_token        = "YOUR_ACCESS_TOKEN"
+    				  config.access_token_secret = "YOUR_ACCESS_SECRET"
+    				end
+    				client.update("I'm tweeting with @gem!")
     			else
     				stat.successes += 1
     			end
