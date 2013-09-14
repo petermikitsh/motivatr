@@ -12,15 +12,12 @@
       <div class="panel-body">
           <div class="row">
           <div class="col-sm-6">Members: <% challenge.group.users.each do |user| %><%= user.name %><% end %></div>
-          <div class="col-sm-6">Time Remaining: <%= time_ago_in_words(challenge.end) %></div>
+          <div class="col-sm-6 pull-right" style="text-align:right;">Time Remaining: <%= time_ago_in_words(challenge.end) %></div>
         </div>
         <div>
           Description: <%= challenge.description %>
+         <%= link_to 'Show', challenge, :class => 'btn btn-default pull-right' %>
         </div>
-        <button type="button" class="btn btn-info btn-default pull-right">Details</button> 
-        <%= link_to 'Show', challenge %>
-        <%= link_to 'Edit', edit_challenge_path(challenge) %>
-        <%= link_to 'Destroy', challenge, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
     </div>
   </div>
