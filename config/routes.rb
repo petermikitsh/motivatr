@@ -1,8 +1,10 @@
 Motivatr::Application.routes.draw do
 
   resources :blackmails
-  resources :challenges
-  resources :groups
+  resources :challenges, except: [:new, :create]
+  resources :groups do
+    resources :challenges, only: [:new, :create]
+  end
   devise_for :users
 
   # The priority is based upon order of creation:
