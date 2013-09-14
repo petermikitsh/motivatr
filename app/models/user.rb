@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :groups
   has_many :blackmails
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :encrypted_password
   # attr_accessible :title, :body
 validates_presence_of :name
 validates_uniqueness_of :name, :email, :case_sensitive => false

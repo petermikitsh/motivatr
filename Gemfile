@@ -6,11 +6,13 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise'
+gem 'simple_form'
 
 group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem "sqlite3"
+  gem "rails-erd"
 end
 
 group :production, :staging do
@@ -25,6 +27,9 @@ gem 'jquery-rails'
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

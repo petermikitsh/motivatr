@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914044539) do
+ActiveRecord::Schema.define(:version => 20130914055511) do
+
+  create_table "actions", :force => true do |t|
+    t.integer  "challenge_id"
+    t.integer  "user_id"
+    t.integer  "count"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "actions", ["challenge_id"], :name => "index_actions_on_challenge_id"
+  add_index "actions", ["user_id"], :name => "index_actions_on_user_id"
 
   create_table "blackmails", :force => true do |t|
     t.string   "image"
@@ -44,6 +55,18 @@ ActiveRecord::Schema.define(:version => 20130914044539) do
     t.integer "group_id"
     t.integer "user_id"
   end
+
+  create_table "stats", :force => true do |t|
+    t.integer  "successes"
+    t.integer  "failures"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "stats", ["group_id"], :name => "index_stats_on_group_id"
+  add_index "stats", ["user_id"], :name => "index_stats_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
