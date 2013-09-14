@@ -87,7 +87,7 @@ function distance(lat1, lon1, lat2, lon2)
 
 function isCloseEnough(lat1, lon1, lat2, lon2)
 {
-	return distance(lat1, lon1, lat2, lon2) <= 20;
+	return distance(lat1, lon1, lat2, lon2) <= 200;
 }
 
 var geocoder;
@@ -111,6 +111,7 @@ var currentLon;
 function codeAddress()
 {
 	var address = "<%= @address %>";
+	console.log(address);
 	geocoder.geocode({'address': address}, 
 		function(results, status)
 		{

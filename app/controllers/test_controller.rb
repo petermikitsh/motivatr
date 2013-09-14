@@ -2,7 +2,7 @@ class TestController < ApplicationController
 	def check_in
 		@lat = 37.783958
 		@long = -122.392385
-		@address = "1 Market St, San Francisco, CA 91405"
+		@address = "1 Market St sf"
 		
 	end
 	def verify
