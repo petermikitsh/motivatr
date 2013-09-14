@@ -9,10 +9,7 @@ Motivatr::Application.routes.draw do
   # first created -> highest priority.
 
   # Required for devise
-  authenticated :user do
-    root :to => "/"
-  end
-  root :to => "devise/sessions#new"
+  root :to => redirect('/users/sign_in')
 
   match '/check_in' => 'test#check_in'
 
