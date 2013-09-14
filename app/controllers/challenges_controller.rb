@@ -43,6 +43,9 @@ class ChallengesController < ApplicationController
   # POST /challenges.json
   def create
     @challenge = Challenge.new(params[:challenge])
+    @challenge.group.users.each { |user| 
+      Action.create( :challenge => @challenge, :user => user, :count => 0)
+    }
 
     respond_to do |format|
       if @challenge.save
