@@ -1,5 +1,6 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal', role: 'form' }) do |f| %>
   <legend><h2>Sign in</h2></legend>
+  <%= devise_error_messages! %>
 
   <div class="form-group">
     <%= f.label :email, class: 'col-lg-2 control-label' %>
