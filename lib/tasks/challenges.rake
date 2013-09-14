@@ -9,9 +9,12 @@ namespace :challenges do
     	puts diff
     	if((diff < 0) && (diff < 59999))
     		challenge.group.users.all.each do |user|
-    			stat = Stats.where(user_id: user.id).where(group_id: challenge.group.id)
+    			stat = Stats.where(user_id: user.id).where(group_id: challenge.group.id).first
+    			puts user.id
+    			puts challenge.group.id
+    			puts stat.id
     			if(Action.where(user_id: user.id).where(challenge_id: challenge.id).count==0)
-    				stat.failures += 1
+    				stat.failures = stat_failures + 1
     				#  Call tweet
     				client = Twitter::REST::Client.new do |config|
     				  config.consumer_key        = "NS3zNErKuJoTG9ChAq9u9gYOUR_CONSUMER_KEY"
@@ -21,7 +24,7 @@ namespace :challenges do
     				end
     				client.update("I'm tweeting with @{user.twitter_handle}!")
     			else
-    				stat.successes += 1
+    				stat.successes = stat.successes + 1
     			end
     			stat.save
     		end
