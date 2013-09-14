@@ -22,11 +22,11 @@
       </tr>
      </thead>
      <tbody>
-     	<% Action.where(challenge_id = @challenge.id).each do |action| %>
-        <tr>
-          <td><%= action.user.name %></td>
-          <td><%= action.count %> / 1</td>
-        </tr>
+     	<% Action.where(challenge_id: @challenge.id).each do |action| %>
+          <tr>
+            <td><%= action.user.name %></td>
+            <td><%= action.count %> / 1</td>
+          </tr>
         <% end %>
      </tbody>
     </table>

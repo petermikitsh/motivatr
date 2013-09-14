@@ -1,4 +1,3 @@
-
 <legend>
   <div class="row">
     <div class="col-xs-7"><h2>My Groups</h2></div>
@@ -11,12 +10,16 @@
 <% @groups.each do |group| %>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><strong>Group Name</strong></h3>
+      <h3 class="panel-title">
+        <strong>
+          <%= link_to 'Group Name', group %>
+        </strong>
+      </h3>
     </div>
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-6">
-          <strong>Members: </strong><i><%= group.users.map(&:name).join(", ") %></i>
+          <strong>Members: </strong><i><%= group.users.map(&:name).to_sentence %></i>
         </div>
         <div class="col-sm-6"><strong>Fun Fund: </strong><i>$<%= group.bucket %></i></div>
       </div>
@@ -25,5 +28,3 @@
   </div><!-- panel -->
 <% end %>
 </table>
-
-<br />
