@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914055511) do
+ActiveRecord::Schema.define(:version => 20130914081309) do
 
   create_table "actions", :force => true do |t|
     t.integer  "challenge_id"
@@ -27,8 +27,12 @@ ActiveRecord::Schema.define(:version => 20130914055511) do
   create_table "blackmails", :force => true do |t|
     t.string   "image"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   add_index "blackmails", ["user_id"], :name => "index_blackmails_on_user_id"
