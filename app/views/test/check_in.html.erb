@@ -1,76 +1,77 @@
 <script type="text/javascript">
-	console.log("start");
-	$(document).ready(function(){
 
-	var x = document.getElementById("demo");
+$(document).ready(function(){
 
-	function getLocation()
+var x = document.getElementById("demo");
+
+function getLocation()
+{
+	if (navigator.geolocation)
 	{
-		if (navigator.geolocation)
-		{
-			navigator.geolocation.getCurrentPosition(usePosition);
-		}
-		else
-		{
-			x.innerHTML = "Geolocation is not supported";
-		}
+		navigator.geolocation.getCurrentPosition(usePosition);
 	}
-
-	function usePosition(position)
+	else
 	{
-		var lat = position.coords.latitude;
-		var lon = position.coords.longitude;
-
-		//x.innerHTML = "Latitude: " + lat +
-			//"<br>Longitude: " + lon;
-
-		console.log("Latitude: " + lat);
-		console.log("Longitude: " + lon);
-
-		//lat1 = 37.790306;
-		//lon1 = -122.404469;
-
-		var lat1 = <%= @lat %>;
-		var lon1 = <%= @long %>;
-
-		console.log("given: ", lat1, lon1);
-		console.log("distance: ", distance(lat1, lon1, lat, lon));
-		console.log("isCloseEnough: ", isCloseEnough(lat1, lon1, lat, lon));
+		x.innerHTML = "Geolocation is not supported";
 	}
+}
 
-	Number.prototype.toRad = function()
-	{
-		return this * Math.PI / 180;
-	}
+function usePosition(position)
+{
+	var lat = position.coords.latitude;
+	var lon = position.coords.longitude;
 
-	function distance(lat1, lon1, lat2, lon2)
-	{
-		var R = 6371;
-		var x1 = lat2 - lat1;
-		var dLat = x1.toRad();
-		var x2 = lon2 - lon1;
-		var dLon = x2.toRad();
-		var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
-	                Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
-	                Math.sin(dLon/2) * Math.sin(dLon/2);  
-		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-		var d = R * c * 1000;
-		return d;
-	}
+	//x.innerHTML = "Latitude: " + lat +
+		//"<br>Longitude: " + lon;
 
-	function isCloseEnough(lat1, lon1, lat2, lon2)
-	{
-		return distance(lat1, lon1, lat2, lon2) <= 50;
-	}
+	console.log("Latitude: " + lat);
+	console.log("Longitude: " + lon);
 
-	getLocation();
-	$.post('/check_in/verify', {'checked_in': false}, function(data) {
-	console.log("data");});	
-	});
+	//lat1 = 37.790306;
+	//lon1 = -122.404469;
+
+	var lat1 = <%= @lat %>;
+	var lon1 = <%= @long %>;
+
+	var isCheckedIn = isCloseEnough(lat1, lon1, lat, lon);
+
+	console.log("given: ", lat1, lon1);
+	console.log("distance: ", distance(lat1, lon1, lat, lon));
+	console.log("isCloseEnough: ", isCloseEnough(lat1, lon1, lat, lon));
+
+	$.post('/check_in/verify', {'checked_in': isCheckedIn}, function(data) {
+		console.log("data");
+	});	
+
+}
+
+Number.prototype.toRad = function()
+{
+	return this * Math.PI / 180;
+}
+
+function distance(lat1, lon1, lat2, lon2)
+{
+	var R = 6371;
+	var x1 = lat2 - lat1;
+	var dLat = x1.toRad();
+	var x2 = lon2 - lon1;
+	var dLon = x2.toRad();
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);  
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var d = R * c * 1000;
+	return d;
+}
+
+function isCloseEnough(lat1, lon1, lat2, lon2)
+{
+	return distance(lat1, lon1, lat2, lon2) <= 20;
+}
+
+getLocation();
+
+});
+
 </script>
-	<div class="row">
-		Hello
-	</div>
-
-	
-</div>

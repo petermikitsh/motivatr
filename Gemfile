@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 
 gem 'devise'
 gem 'simple_form'
+gem 'paperclip'
+gem 'aws-sdk'
 
 group :development, :test do
   gem "better_errors"
