@@ -92,12 +92,8 @@ class ChallengesController < ApplicationController
   end
 
   def check_in
-<<<<<<< HEAD
-    
-=======
     @lat = 37.793020
     @long = -122.394507
->>>>>>> 382ccc75eb056f7c04cf3cce4358ee3148770c13
     @address = "1 Market St, San Francisco, CA 91405"
   end
 
