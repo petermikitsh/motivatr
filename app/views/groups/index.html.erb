@@ -1,23 +1,30 @@
-<h1>Listing groups</h1>
 
-<table>
-  <tr>
-    <th>Bucket</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<legend>
+  <div class="row">
+    <div class="col-xs-7"><h2>My Groups</h2></div>
+    <div class="col-xs-5">
+      <%= button_to 'New Group', new_group_path, method: :get, class: 'btn btn-primary btn-lg btn-block' %>
+    </div>
+  </div>
+</legend>
 
 <% @groups.each do |group| %>
-  <tr>
-    <td><%= group.bucket %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><strong>Group Name</strong></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <strong>Members: </strong><i><%= group.users.map(&:name).join(", ") %></i>
+        </div>
+        <div class="col-sm-6"><strong>Fun Fund: </strong><i>$<%= group.bucket %></i></div>
+      </div>
+      <%= button_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %></div>
+    </div><!-- panel-body -->
+  </div><!-- panel -->
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Group', new_group_path %>
