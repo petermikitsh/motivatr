@@ -42,7 +42,15 @@ class ChallengesController < ApplicationController
   # POST /challenges
   # POST /challenges.json
   def create
-    @challenge = Challenge.new(params[:challenge])
+    timezone = "%+03d:00" % params[:timezone]
+    params[:challenge][:start] += timezone
+    params[:challenge][:end] += timezone
+
+    group = Group.find(params[:group_id])
+    @challenge = group.challenges.build(params[:challenge])
+    @challenge.group.users.each do |user|
+      Action.create( :challenge => @challenge, :user => user, :count => 0)
+    end
 
     respond_to do |format|
       if @challenge.save
