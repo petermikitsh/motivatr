@@ -2,17 +2,14 @@ Motivatr::Application.routes.draw do
 
   resources :blackmails
   resources :challenges
-
-
   resources :groups
-
   devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Required for devise
-  root to: "devise/sessions#new"
+  root :to => redirect('/users/sign_in')
 
   match '/check_in' => 'test#check_in'
 
