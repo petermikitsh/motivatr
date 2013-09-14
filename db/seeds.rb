@@ -10,7 +10,7 @@ user1 = User.create(:email=>'joe@test.com',:name=>'Joe Test',:password=>'passwor
 user2 = User.create(:email=>'paul@test.com',:name=>'Paul Test',:password=>'password')
 user3 = User.create(:email=>'mario@test.com',:name=>'Mario Test',:password=>'password')
 
-group1 = Group.create(:bucket => 30)
+group1 = Group.create(:bucket => 30, :name => "Test Group")
 group1.users = [user1, user2, user3]
 
 challenge1 = Challenge.create(:description=>'Go to UHO', :start=>Time.now, :end=>Time.now+60, :group => group1 )
