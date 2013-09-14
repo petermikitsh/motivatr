@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/application.css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Motivatr</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Challenges</a></li>
+            <li><a href="#about">Groups</a></li>
+            <li><a href="#contact">Profile</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-sm-8"><h2>Challenges</h2></div>
+        <div class="col-xs-6 col-sm-4">
+          <a data-toggle="modal" href="#myModal" type="button" class="btn btn-primary btn-lg btn-block">New Challenge</a>
+        </div>
+      </div>
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <strong>Gym</strong>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-6">Members: Alice, Bob, Tom</div>
+                <div class="col-sm-6">Time Remaining: 5 hours</div>
+              </div>
+              <div class="spacer10">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+              </div>
+              <button type="button" class="btn btn-info btn-default pull-right">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+               <strong>Tan</strong>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-6">Members: Alice, Bob, Tom</div>
+                <div class="col-sm-6">Time Remaining: 5 hours</div>
+              </div>
+              <div>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+              </div>
+              <button type="button" class="btn btn-info btn-default pull-right">Details</button> 
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                <strong>Laundry</strong>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row">
+                <div class="col-sm-6">Members: Alice, Bob, Tom</div>
+                <div class="col-sm-6">Time Remaining: 5 hours</div>
+              </div>
+              <div>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+              </div>
+              <button type="button" class="btn btn-info btn-default pull-right">Details</button> 
+            </div>
+          </div>
+        </div>
+      </div><!-- panel-group -->
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">New Challenge</h4>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal create-challenge">
+                <fieldset>
+                <!-- Text input-->
+                <div class="control-group">
+                  <label class="control-label" for="name">Challenge Name:</label>
+                  <div class="controls">
+                    <input id="name" name="name" type="text" placeholder="Gym, Tan, Laundry" class="input-medium">
+                  </div>
+                </div>
+                <!-- Select Basic -->
+                <div class="control-group">
+                  <label class="control-label" for="group">Group:</label>
+                  <div class="controls">
+                    <select id="group" name="group" class="input-medium">
+                      <option>Gym Buddies</option>
+                      <option>Tan Buddies</option>
+                      <option>Laundry Buddies</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- Textarea -->
+                <div class="control-group">
+                  <label class="control-label" for="description">Description</label>
+                  <div class="controls">                     
+                    <textarea id="description" name="description">Description goes here</textarea>
+                  </div>
+                </div>
+                <label class="control-label">End Date:</label>
+                <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                  <input class="span2" size="16" type="text" value="12-02-2012" readonly="">
+                  <span class="add-on"><i class="icon-calendar"></i></span>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block spacer10" type="submit">Create</button>
+                </fieldset>
+              </form>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    </div><!-- /.container -->
+  </body>
+</html>
