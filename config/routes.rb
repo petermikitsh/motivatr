@@ -9,7 +9,7 @@ Motivatr::Application.routes.draw do
   # first created -> highest priority.
 
   # Required for devise
-  root :to => redirect('/users/sign_in')
+  root :to => "challenges#index"
 
   match '/check_in' => 'test#check_in'
 
