@@ -1,4 +1,7 @@
 Motivatr::Application.routes.draw do
+  resources :challenges
+
+
   resources :groups
 
 
