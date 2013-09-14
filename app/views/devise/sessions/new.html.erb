@@ -1,13 +1,3 @@
-<style>
-  body {
-    background-image: url("/rocky2.jpg");
-  }
-
-  label, h2 {
-    color: #fff;
-  }
-</style>
-
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal', role: 'form' }) do |f| %>
   <legend><h2>Sign in</h2></legend>
   <%= devise_error_messages! %>
