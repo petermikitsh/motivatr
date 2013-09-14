@@ -15,7 +15,7 @@ Motivatr::Application.routes.draw do
 
   match '/check_in' => 'test#check_in'
 
-  post '/check_in/verify' => 'test#verify'
+  post '/check_in/verify' => 'challenges#verify'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

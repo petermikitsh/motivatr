@@ -99,13 +99,13 @@ class ChallengesController < ApplicationController
 
   def verify
     puts "works"
-    if(params[:checked_in]==true)
+    puts params
+    if(params[:checked_in]==true || params[:checked_in]=="true")
       action = Action.where(user_id: current_user.id).first
       action.count = action.count + 1
       action.save
       puts "yes"
     else
-      @string = "no"
       puts "no"
     end
     respond_to do |format|

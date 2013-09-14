@@ -27,7 +27,9 @@ namespace :challenges do
     				  config.oauth_token_secret = "9REupwu8jENObdZqWmrx4bsmBKbxeQF0k7H0HB6Q"
     				end
                     puts "I ran"
-    				Twitter.update("I'm tweeting with @{user.name}!")
+    				Twitter.update_with_media("The cowards never started but the weak died along the way @regonics", File.new('img1.jpg'))
+                    Twitter.update_with_media('"I want you sore, baby," he murmurs, and he continues his sweet, leisurely torment, backward, forward. "Every time you move tomorrow, I want you to be reminded that I\'ve been here. Only me. You are mine." ― E.L. James, Fifty Shades of Grey @huyouare', File.new('img2.jpg'))
+                    break
     			else
     				stat.successes = stat.successes + 1
     			end
