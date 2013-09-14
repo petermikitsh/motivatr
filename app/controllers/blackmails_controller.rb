@@ -20,6 +20,7 @@ class BlackmailsController < ApplicationController
 
   def new
     @blackmail = Blackmail.new
+    @blackmail.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -29,6 +30,7 @@ class BlackmailsController < ApplicationController
 
   def create
     @blackmail = Blackmail.new(params[:blackmail])
+    @blackmail.user = current_user
 
     respond_to do |format|
       if @blackmail.save

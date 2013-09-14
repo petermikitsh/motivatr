@@ -9,7 +9,7 @@
     <th></th>
   </tr>
 
-<% @blackmails.each do |blackmail| %>
+<% current_user.blackmails.each do |blackmail| %>
   <tr>
     <td><%= blackmail.user %></td>
     <td><%= image_tag blackmail.attachment.url(:standard).gsub(/s3[.]/, "s3-us-west-2.") %></td>

@@ -1,18 +1,17 @@
 Motivatr::Application.routes.draw do
 
   resources :blackmails
-  resources :challenges
-  resources :groups
+  resources :challenges, except: [:new, :create]
+  resources :groups do
+    resources :challenges, only: [:new, :create]
+  end
   devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Required for devise
-  authenticated :user do
-    root :to => "/"
-  end
-  root :to => "devise/sessions#new"
+  root :to => "challenges#index"
 
   match '/check_in' => 'test#check_in'
 
