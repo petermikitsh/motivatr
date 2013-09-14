@@ -3,27 +3,23 @@
 <% current_user.groups.each do |group| %>
   <% group.challenges.each do |challenge| %>
     <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-          <strong>Name: <%= challenge.name %></strong>
-      </h4>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-          <div class="col-sm-6">
-            <strong>Members: </strong><i><%= challenge.group.users.map(&:name).join(", ") %></i>
-          </div>
-        <div class="col-sm-6"><strong>Time Remaining: </strong><%= time_ago_in_words(challenge.end) %></div>
-        </div>
-      <div class="spacer10">
-        Description: <%= challenge.description %>
+      <div class="panel-heading">
+        <h4 class="panel-title">
+            <strong>Name: <%= challenge.name %></strong>
+        </h4>
       </div>
-      <%= button_to 'Details', challenge, method: :get, :class => 'btn btn-primary pull-right' %>
+      <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <strong>Members: </strong><i><%= challenge.group.users.map(&:name).join(", ") %></i>
+            </div>
+          <div class="col-sm-6"><strong>Time Remaining: </strong><%= time_ago_in_words(challenge.end) %></div>
+          </div>
+        <div class="spacer10">
+          Description: <%= challenge.description %>
+        </div>
+        <%= button_to 'Details', challenge, method: :get, :class => 'btn btn-primary pull-right' %>
+      </div>
     </div>
-  </div>
-  <% end %>
+    <% end %>
 <% end %>
-
-
-</div><!-- panel-group -->
-
