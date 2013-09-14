@@ -34,7 +34,7 @@ class BlackmailsController < ApplicationController
 
     respond_to do |format|
       if @blackmail.save
-        format.html { redirect_to @blackmail, notice: 'Challenge was successfully created.' }
+        format.html { redirect_to action: 'index' }
         format.json { render json: @blackmail, status: :created, location: @blackmail }
       else
         format.html { render action: "new" }
