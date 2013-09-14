@@ -1,13 +1,7 @@
-<p>
-  <b>Bucket:</b>
-  <%= @group.bucket %>
-</p>
-
 <%= form_for([@group, Challenge.new], html: { class: 'form-horizontal', role: 'form' }) do |f| %>
-  <legend><h2>New challenge</h2></legend>
+  <legend><h2>New Challenge - <%= @group.name %></h2></legend>
 
   <%= hidden_field_tag :timezone %>
-
   <div class="form-group">
     <%= f.label :name, class: 'col-lg-2 control-label' %>
     <div class="col-lg-4">
@@ -42,7 +36,3 @@
     </div>
   </div>
 <% end %>
-
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>

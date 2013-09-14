@@ -12,6 +12,13 @@
   <% end %>
 
   <div class="form-group">
+     <%= f.label :name, class: 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :bucket, class: 'col-lg-2 control-label' %>
     <div class="col-lg-4">
       <%= f.number_field :bucket, class: 'form-control' %>
