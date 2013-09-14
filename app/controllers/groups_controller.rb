@@ -41,6 +41,17 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(params[:group])
+    if(Group.all.size==0)
+      group_id =1
+    else
+      group_id = Group.last.id + 1
+    end
+    @group.users.each do |user|
+      stat = Stats.create
+      stat.user_id = user.id
+      stat.group_id = group_id
+      stat.save
+    end
 
     respond_to do |format|
       if @group.save
