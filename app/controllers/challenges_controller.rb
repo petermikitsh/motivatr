@@ -45,9 +45,10 @@ class ChallengesController < ApplicationController
     timezone = "%+03d:00" % params[:timezone]
     params[:challenge][:start] += timezone
     params[:challenge][:end] += timezone
-    logger.debug(params)
     @challenge = Challenge.new(params[:challenge])
-    logger.debug(@challenge)
+    @challenge.group.users.each do |user|
+      Action.create( :challenge => @challenge, :user => user, :count => 0)
+    end
 
     respond_to do |format|
       if @challenge.save
