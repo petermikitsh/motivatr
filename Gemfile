@@ -31,6 +31,7 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails'
 
 gem 'omniauth'
+gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 gem 'twitter'
