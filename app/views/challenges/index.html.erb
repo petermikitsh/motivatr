@@ -16,7 +16,10 @@
         <div class="spacer10">
           Description: <%= challenge.description %>
         </div>
-        <%= link_to 'Details', challenge, :class => 'btn btn-primary pull-right' %>
+        <div class="spacer10 row">
+        <div class="col-xs-6 col-sm-3"><%= button_to 'Check In', action="check_in", class: 'btn btn-success btn-block' %></div>
+        <div class="col-xs-6 col-sm-3"><%= button_to 'Details', challenge, method: :get, class: 'btn btn-primary btn-block' %></div>
+      </div>
       </div>
     </div>
     <% end %>

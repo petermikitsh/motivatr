@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914201143) do
+ActiveRecord::Schema.define(:version => 20130914201353) do
 
   create_table "actions", :force => true do |t|
     t.integer  "challenge_id"
@@ -91,6 +91,9 @@ ActiveRecord::Schema.define(:version => 20130914201143) do
     t.datetime "updated_at",                             :null => false
     t.string   "name"
     t.string   "fb_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "access_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -17,6 +17,13 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :email, class: 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :password, class: 'col-lg-2 control-label' %>
     <div class="col-lg-4">
       <%= f.password_field :password, class: 'form-control' %>
