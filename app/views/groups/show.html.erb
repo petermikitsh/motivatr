@@ -9,6 +9,20 @@
   <%= hidden_field_tag :timezone %>
 
   <div class="form-group">
+    <%= f.label :name, class: 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, class: 'col-lg-2 control-label' %>
+    <div class="col-lg-4">
+      <%= f.text_field :description, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :start, class: 'col-lg-2 control-label' %>
     <div class="col-lg-4">
       <%= f.text_field :start, type: 'datetime-local', class: 'form-control' %>
@@ -19,13 +33,6 @@
     <%= f.label :end, class: 'col-lg-2 control-label' %>
     <div class="col-lg-4">
       <%= f.text_field :end, type: 'datetime-local', class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :description, class: 'col-lg-2 control-label' %>
-    <div class="col-lg-4">
-      <%= f.text_field :description, class: 'form-control' %>
     </div>
   </div>
 
