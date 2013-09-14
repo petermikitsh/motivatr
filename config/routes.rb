@@ -1,7 +1,6 @@
 Motivatr::Application.routes.draw do
   resources :groups
 
-
   devise_for :users
 
   # The priority is based upon order of creation:
@@ -9,6 +8,10 @@ Motivatr::Application.routes.draw do
 
   # Required for devise
   root :to => "home#index"
+
+  match 'checkin' => 'test#check_in'
+
+  post '/check_in/verify' => 'test#verify'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
