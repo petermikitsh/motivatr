@@ -1,4 +1,4 @@
-<%= form_for(@group) do |f| %>
+<%= simple_form_for(@group) do |f| %>
   <% if @group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -14,8 +14,10 @@
   <div class="field">
     <%= f.label :bucket %><br />
     <%= f.number_field :bucket %>
+    <%= f.association :users, :collection => User.all(:order => "name"), required: false %>
+    
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-primary" %>
   </div>
 <% end %>
