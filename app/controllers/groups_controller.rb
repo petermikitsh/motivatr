@@ -52,6 +52,8 @@ class GroupsController < ApplicationController
       stat = Stats.create
       stat.user_id = user.id
       stat.group_id = group_id
+      stat.successes = 0
+      stat.failures = 0
       stat.save
     end
 

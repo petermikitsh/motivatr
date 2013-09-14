@@ -2,27 +2,32 @@ namespace :challenges do
 
   desc "Check for expired challenges"
   task :check => :environment do
+    require 'twitter'
     puts Time.now
     Challenge.all.each do |challenge|
     	puts challenge.name
     	diff = challenge.end - Time.now
     	puts diff
-    	if((diff < 0) && (diff < 59999))
+    	if((diff > 0) && (diff > 5))
     		challenge.group.users.all.each do |user|
     			stat = Stats.where(user_id: user.id).where(group_id: challenge.group.id).first
     			puts user.id
     			puts challenge.group.id
     			puts stat.id
-    			if(Action.where(user_id: user.id).where(challenge_id: challenge.id).count==0)
-    				stat.failures = stat_failures + 1
+    			if(Action.where(user_id: user.id).where(challenge_id: challenge.id).first.count==0)
+    				stat.failures = stat.failures + 1
+
+                    require 'openssl'
+                    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
     				#  Call tweet
-    				client = Twitter::REST::Client.new do |config|
-    				  config.consumer_key        = "NS3zNErKuJoTG9ChAq9u9gYOUR_CONSUMER_KEY"
+    				Twitter.configure do |config|
+    				  config.consumer_key        = "NS3zNErKuJoTG9ChAq9u9g"
     				  config.consumer_secret     = "ZIdllly86QZNHwK3PrkdVXg1aPkjI04MQGD39jUguw"
-    				  config.access_token        = "1864697022-rCWE5vo4ro2lpj5tJhmkMUOKBDRTNke4ijW3W8S"
-    				  config.access_token_secret = "9REupwu8jENObdZqWmrx4bsmBKbxeQF0k7H0HB6Q"
+    				  config.oauth_token        = "1864697022-rCWE5vo4ro2lpj5tJhmkMUOKBDRTNke4ijW3W8S"
+    				  config.oauth_token_secret = "9REupwu8jENObdZqWmrx4bsmBKbxeQF0k7H0HB6Q"
     				end
-    				client.update("I'm tweeting with @{user.twitter_handle}!")
+                    puts "I ran"
+    				Twitter.update("I'm tweeting with @{user.name}!")
     			else
     				stat.successes = stat.successes + 1
     			end
